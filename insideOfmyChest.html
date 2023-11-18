@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            text-decoration: none;            
+        }
+        body{
+          width: 100%;  
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items:  center;
+          background: #13010b;
+
+        }
+        .heartContainer{
+            width: 100px;
+            height: 100px;
+            background: #F90857;
+            position: relative;
+            box-shadow: 0 0 20px #ff155f,
+                        0 0 60px #ff155f;
+                        transform: rotate(-45deg);
+            animation: heart 1s linear infinite 0.2s alternate;
+            cursor: pointer;
+        }
+        @keyframes heart{
+            0%{
+                transform: rotate(-45deg) scale(1);
+            }
+            90%{
+                transform: rotate(-45deg) scale(1.6);
+            }
+            100%{
+                transform: rotate(-45deg) scale(1.4);
+            }
+        }
+        .heartShape1{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #F90857;
+            border-radius: 50%;
+            left: 0;
+            top: -50%;
+            box-shadow: -10px 10px 90px #F90857;            
+        }
+        .heartShape2{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #F90857;
+            border-radius: 50%;            
+            top: 0%;         
+            right: -50%;   
+            box-shadow: -10px 10px 90px #F90857;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="heartContainer">
+        <div class="heartShape1"></div>
+        <div class="heartShape2"></div>        
+    </div>
+    <div class="floating-message">I LOVE YOU</div>
+</body>
+<script type="text/javascript">
+    const hex = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+    const container = document.querySelector('.heartContainer');const shape1 = document.querySelector('.heartShape1');
+    const shape2 = document.querySelector('.heartShape2');    
+
+    container.addEventListener('click',()=>{
+        let Hexcolor = '#';
+        for(i=0; i<6; i++){
+            Hexcolor+=hex[getRandome()]
+        }
+        container.style.background=Hexcolor
+        container.style.boxShadow="-10px 10px 90px"+Hexcolor;
+        shape1.style.background=Hexcolor
+        shape1.style.boxShadow="-10px 10px 90px"+Hexcolor;
+        shape2.style.background=Hexcolor
+        shape2.style.boxShadow="-10px 10px 90px"+Hexcolor;
+    })
+
+    function getRandome(){
+        return Math.floor(Math.random()*hex.length)
+    }
+</script>
+</html>
